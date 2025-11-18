@@ -1,0 +1,339 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* Swiper CSS imports */
+@import url('https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  overflow-x: hidden;
+  position: relative;
+  cursor: default;
+  /* Smooth scrolling styles */
+  scroll-behavior: smooth; 
+  overscroll-behavior: none; /* Prevent bounce effect */
+  -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+}
+
+/* Lining effect background */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Animated grid lines */
+@keyframes grid-move {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+body::after {
+  animation: grid-move 20s linear infinite;
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+.App {
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+/* Custom styles for hero section */
+.hero-title {
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.8;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth animations */
+* {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Performance optimizations for smooth scrolling */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Better GPU acceleration */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Typography improvements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #404040, #606060);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #505050, #707070);
+}
+
+/* Glow effects */
+.glow {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Interactive elements hover effect */
+button:hover, a:hover {
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+/* Glass effect for dark theme */
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Preloader animations */
+@keyframes grid-flow {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(80px, 80px); }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px); 
+    opacity: 0.4;
+  }
+  25% { 
+    transform: translateY(-20px) translateX(5px); 
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translateY(-10px) translateX(-5px); 
+    opacity: 1;
+  }
+  75% { 
+    transform: translateY(-15px) translateX(3px); 
+    opacity: 0.6;
+  }
+}
+
+@keyframes diagonal-move {
+  0% { transform: rotate(15deg) translateY(-100%); }
+  100% { transform: rotate(15deg) translateY(100vh); }
+}
+
+@keyframes stair-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(100%) skewX(-15deg); }
+}
+
+/* Horizontal Text Reveal Effect */
+.horizontal-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.horizontal-reveal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #000000 0%, #111111 50%, #000000 100%);
+  transform: translateX(0%);
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+  z-index: 1;
+}
+
+.horizontal-reveal-active::before {
+  transform: translateX(100%);
+}
+
+.horizontal-reveal-text {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1) 0.3s;
+}
+
+.horizontal-reveal-active .horizontal-reveal-text {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+/* Title Horizontal Reveal */
+.title-horizontal-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.title-horizontal-reveal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+  transform: translateX(0%);
+  transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+  z-index: 1;
+}
+
+.title-horizontal-reveal.horizontal-reveal-active::before {
+  transform: translateX(100%);
+}
+
+/* About section animations */
+.about-line {
+  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.about-line-hidden {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.about-line-visible {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+/* About section reveal animations */
+@keyframes reveal-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes reveal-scale {
+  from {
+    opacity: 0;
+    transform: translateX(-40px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Smooth text rendering */
+.about-text {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.animate-reveal {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.animate-reveal-scale {
+  opacity: 1 !important;
+  transform: translateX(0) scale(1) !important;
+}
+
+/* Delay classes for stair effect */
+.delay-75 { animation-delay: 75ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-450 { animation-delay: 450ms; }
+
+/* Project Showcase Scroll Container */
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
