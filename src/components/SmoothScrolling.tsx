@@ -19,11 +19,14 @@ const SmoothScrolling: React.FC<SmoothScrollingProps> = ({ children }) => {
   useEffect(() => {
     // Initialize Lenis smooth scroll
     lenisRef.current = new Lenis({
-      duration: 1.2,
+      duration: 1.5,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       wheelMultiplier: 1,
       touchMultiplier: 2,
+      infinite: false,
+      syncTouch: false,
+      syncTouchLerp: 0.1,
     });
 
     // Connect Lenis with GSAP ScrollTrigger
@@ -97,12 +100,20 @@ const SmoothScrolling: React.FC<SmoothScrollingProps> = ({ children }) => {
   // Expose Lenis instance for external control
   useEffect(() => {
     const handleLenisControl = (event: CustomEvent) => {
-      const { action, target } = event.detail;
+      const { action, target, duration, offset } = event.detail;
       
       if (lenisRef.current) {
         switch (action) {
           case 'scrollTo':
-            lenisRef.current.scrollTo(target, { duration: 1.5 });
+            lenisRef.current.scrollTo(target, { 
+              duration: duration || 1.5,
+              easing: (t: number) => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1,
+              lerp: 0.1,
+              immediate: false,
+              lock: false,
+              force: false,
+              offset: offset || 0
+            });
             break;
           case 'stop':
             lenisRef.current.stop();

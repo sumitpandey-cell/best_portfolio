@@ -30,7 +30,15 @@ export const startSmoothScroll = () => {
 
 // Scroll to section by ID
 export const scrollToSection = (sectionId: string, duration: number = 1.5) => {
-  smoothScrollTo(`#${sectionId}`, duration);
+  const event = new CustomEvent('lenisControl', {
+    detail: {
+      action: 'scrollTo',
+      target: `#${sectionId}`,
+      duration,
+      offset: -100 // Offset to account for navbar height and spacing
+    }
+  });
+  window.dispatchEvent(event);
 };
 
 // Scroll to top

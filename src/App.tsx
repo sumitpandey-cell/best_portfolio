@@ -7,7 +7,6 @@ import SmoothScrolling from './components/SmoothScrolling'
 import ScrollProgress from './components/ScrollProgress'
 import ScrollToTop from './components/ScrollToTop'
 import './App.css'
-import CustomCarousel from './components/projects'
 import ScrollVelocity from './components/ui/scrollVelocity'
 
 function App() {
@@ -40,7 +39,7 @@ function App() {
               velocity={30}
             />
             <About />
-            <CustomCarousel />
+            {/* <SmoothCursor /> */}
             <Contact />
           </div>
         </SmoothScrolling>
