@@ -85,7 +85,7 @@ const CustomCarousel = () => {
     return (
 
             <div className=" min-h-screen w-full h-full flex items-center justify-center">
-                <div className="relative py-10">
+                <div className="relative py-10 w-full flex flex-col items-center justify-center">
                     <div className="text-center mb-16">
                         <h1 className="text-6xl md:text-9xl font-black text-white/90 glow-text mb-4">
                             Projects

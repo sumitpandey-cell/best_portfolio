@@ -1,7 +1,5 @@
 
 import image from '../assets/image.png';
-import ScrollVelocity from './ui/scrollVelocity';
-import LightRays from './LightRays';
 import Navbar from './navbar';
 import MagneticButton from './MagneticButton';
 import { scrollToSection } from '../lib/smoothScroll';
@@ -18,21 +16,6 @@ const Hero = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       
-      {/* Light Rays Background Effect */}
-      <div className="absolute inset-0">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#00ffff"
-          raysSpeed={1.5}
-          lightSpread={0.8}
-          rayLength={1.2}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0.1}
-          distortion={0.05}
-          className="opacity-40"
-        />
-      </div>
 
       {/* Central Light Brightening Effect */}
       <div className="absolute inset-0">
@@ -187,10 +170,7 @@ const Hero = () => {
           </a>
         </div>
       </div>
-      <ScrollVelocity
-        texts={['SUMIT', 'PANDEY', ""]}
-        velocity={30}
-      />
+
     </div>
   );
 };

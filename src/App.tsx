@@ -8,6 +8,7 @@ import ScrollProgress from './components/ScrollProgress'
 import ScrollToTop from './components/ScrollToTop'
 import './App.css'
 import CustomCarousel from './components/projects'
+import ScrollVelocity from './components/ui/scrollVelocity'
 
 function App() {
   const [showPreloader, setShowPreloader] = useState(true)
@@ -24,24 +25,27 @@ function App() {
   return (
     <div className="App min-h-screen relative">
       {showPreloader && <Preloader onComplete={handlePreloaderComplete} />}
-      
+
       {/* Scroll Progress Indicator */}
       {showContent && <ScrollProgress />}
-      
+
       {/* Main content with smooth scrolling */}
       {showContent && (
         <SmoothScrolling>
-          <div className={`transition-all duration-700 ease-out ${
-            showContent ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
-          }`}>
+          <div className={`transition-all duration-700 ease-out ${showContent ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
+            }`}>
             <Hero />
+            <ScrollVelocity
+              texts={['SUMIT', 'PANDEY', ""]}
+              velocity={30}
+            />
             <About />
-            <CustomCarousel/>
+            <CustomCarousel />
             <Contact />
           </div>
         </SmoothScrolling>
       )}
-      
+
       {/* Scroll to Top Button */}
       {showContent && <ScrollToTop />}
     </div>
