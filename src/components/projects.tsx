@@ -83,26 +83,69 @@ const projectData: Project[] = [
 // Using the carousel component with custom project cards
 const CustomCarousel = () => {
     return (
+        <div id="work" className="min-h-screen w-full relative overflow-hidden bg-black ">
+            {/* Animated gradient background */}
+            <div className="absolute inset-0">
+                <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-blue-950/30 via-black to-purple-950/30"
+                    animate={{
+                        backgroundPosition: ['0% 0%', '100% 100%'],
+                    }}
+                    transition={{ duration: 25, repeat: Infinity, repeatType: 'reverse' }}
+                />
 
-            <div className=" min-h-screen w-full h-full flex items-center justify-center">
-                <div className="relative py-10 w-full flex flex-col items-center justify-center">
-                    <div className="text-center mb-16">
-                        <h1 className="text-6xl md:text-9xl font-black text-white/90 glow-text mb-4">
-                            Projects
+                {/* Animated gradient orbs */}
+                <motion.div
+                    className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"
+                    animate={{
+                        x: [0, 100, 0],
+                        y: [0, -80, 0],
+                        scale: [1, 1.3, 1],
+                    }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <motion.div
+                    className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"
+                    animate={{
+                        x: [0, -80, 0],
+                        y: [0, 60, 0],
+                        scale: [1, 1.2, 1],
+                    }}
+                    transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+                />
+
+                {/* Noise texture overlay */}
+                <div className="absolute inset-0 opacity-[0.015]"
+                    style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E")`,
+                    }}
+                />
+            </div>
+
+            <div className="relative z-10 flex items-center justify-center px-6 lg:px-8 py-20">
+                <div className="relative w-full flex flex-col items-center justify-center">
+                    {/* Section Title */}
+                    <motion.div
+                        className="text-center mb-16"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                    >
+                        <h1
+                            className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-white/90 mb-4"
+                            style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+                        >
+                            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                                PROJECTS
+                            </span>
                         </h1>
-                        <p className="text-gray-400 text-xl max-w-2xl mx-auto">
+                        <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
                             Explore my latest work and creative solutions
                         </p>
-                    </div>
-                    <FlickeringGrid
-                        className="absolute inset-0"
-                        squareSize={4}
-                        gridGap={6}
-                        flickerChance={0.3}
-                        color="rgb(100, 100, 100)"
-                        maxOpacity={0.2}
-                    />
-                    <div className="relative z-10">
+                    </motion.div>
+
+                    <div className="relative z-10 w-full flex justify-center">
                         <ProjectCarousel_003
                             projects={projectData}
                             showPagination={true}
@@ -113,8 +156,12 @@ const CustomCarousel = () => {
                         />
                     </div>
                 </div>
-
             </div>
+
+            <style>{`
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+            `}</style>
+        </div>
     );
 };
 
@@ -137,43 +184,43 @@ const ProjectCarousel_003 = ({
     spaceBetween?: number;
 }) => {
     const css = `
-  .Enhanced_Carousel_003 {
-    width: 100%;
-    height: 500px;
-    padding-bottom: 50px !important;
-  }
-  
-  .Enhanced_Carousel_003 .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width: 400px;
-    height: 450px;
+            .Enhanced_Carousel_003 {
+                width: 100%;
+            height: 500px;
+            padding-bottom: 50px !important;
   }
 
-  .swiper-pagination-bullet {
-    background-color: #8B5CF6 !important;
+            .Enhanced_Carousel_003 .swiper-slide {
+                background - position: center;
+            background-size: cover;
+            width: 400px;
+            height: 450px;
   }
 
-  .swiper-pagination-bullet-active {
-    background-color: #A855F7 !important;
+            .swiper-pagination-bullet {
+                background - color: #8B5CF6 !important;
   }
 
-  .swiper-button-next,
-  .swiper-button-prev {
-    color: #8B5CF6 !important;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-    border-radius: 50%;
-    width: 50px !important;
-    height: 50px !important;
-    border: 1px solid rgba(139, 92, 246, 0.3);
+            .swiper-pagination-bullet-active {
+                background - color: #A855F7 !important;
   }
 
-  .swiper-button-next:hover,
-  .swiper-button-prev:hover {
-    background: rgba(139, 92, 246, 0.2);
+            .swiper-button-next,
+            .swiper-button-prev {
+                color: #8B5CF6 !important;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            width: 50px !important;
+            height: 50px !important;
+            border: 1px solid rgba(139, 92, 246, 0.3);
   }
-  `;
+
+            .swiper-button-next:hover,
+            .swiper-button-prev:hover {
+                background: rgba(139, 92, 246, 0.2);
+  }
+            `;
 
     return (
         <motion.div
@@ -234,7 +281,7 @@ const ProjectCarousel_003 = ({
                     className="Enhanced_Carousel_003"
                     modules={[EffectCoverflow, Autoplay, Pagination, Navigation]}
                 >
-                    {projects.map((project, index) => (
+                    {projects.map((project) => (
                         <SwiperSlide key={project.id}>
                             <div className="relative h-full w-full group cursor-pointer">
                                 {/* Project Image */}
@@ -244,47 +291,47 @@ const ProjectCarousel_003 = ({
                                     alt={project.title}
                                 />
 
-                                {/* Overlay with project details */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500">
-                                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                {/* Overlay with project details - Always visible on mobile, hover on desktop */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent rounded-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500">
+                                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white">
                                         {/* Project Title */}
-                                        <h3 className="text-2xl font-bold mb-2 text-white glow-text">
+                                        <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-white glow-text">
                                             {project.title}
                                         </h3>
 
                                         {/* Project Description */}
-                                        <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+                                        <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3">
                                             {project.description}
                                         </p>
 
                                         {/* Tech Stack */}
-                                        <div className="flex flex-wrap gap-2 mb-4">
+                                        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                                             {project.techStack.slice(0, 3).map((tech, techIndex) => (
                                                 <span
                                                     key={techIndex}
-                                                    className="px-2 py-1 bg-purple-600/30 backdrop-blur-sm border border-purple-500/30 rounded-md text-xs text-purple-200"
+                                                    className="px-1.5 py-0.5 sm:px-2 sm:py-1 bg-purple-600/30 backdrop-blur-sm border border-white/20 rounded-md text-[10px] sm:text-xs text-purple-200"
                                                 >
                                                     {tech}
                                                 </span>
                                             ))}
                                             {project.techStack.length > 3 && (
-                                                <span className="px-2 py-1 bg-gray-600/30 backdrop-blur-sm border border-gray-500/30 rounded-md text-xs text-gray-300">
+                                                <span className="px-1.5 py-0.5 sm:px-2 sm:py-1 bg-gray-600/30 backdrop-blur-sm border border-white/20 rounded-md text-[10px] sm:text-xs text-gray-300">
                                                     +{project.techStack.length - 3} more
                                                 </span>
                                             )}
                                         </div>
 
                                         {/* Action Buttons */}
-                                        <div className="flex gap-3">
+                                        <div className="flex gap-2 sm:gap-3 justify-center">
                                             {project.liveDemo && (
                                                 <button
                                                     onClick={(e) => {
                                                         e.stopPropagation();
                                                         window.open(project.liveDemo, '_blank');
                                                     }}
-                                                    className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105"
+                                                    className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 transform hover:scale-105"
                                                 >
-                                                    <ExternalLink size={16} />
+                                                    <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
                                                     Demo
                                                 </button>
                                             )}
@@ -294,23 +341,12 @@ const ProjectCarousel_003 = ({
                                                         e.stopPropagation();
                                                         window.open(project.github, '_blank');
                                                     }}
-                                                    className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105"
+                                                    className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 transform hover:scale-105"
                                                 >
-                                                    <Github size={16} />
+                                                    <Github className="w-3 h-3 sm:w-4 sm:h-4" />
                                                     Code
                                                 </button>
                                             )}
-                                            <button
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    // Add your details modal/navigation logic here
-                                                    console.log('View details for:', project.title);
-                                                }}
-                                                className="flex items-center gap-2 px-4 py-2 bg-transparent border border-white/30 hover:bg-white/10 text-white rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105"
-                                            >
-                                                <ArrowRight size={16} />
-                                                Details
-                                            </button>
                                         </div>
                                     </div>
                                 </div>

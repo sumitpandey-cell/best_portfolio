@@ -77,9 +77,9 @@ const SmoothScrolling: React.FC<SmoothScrollingProps> = ({ children }) => {
         scroll-behavior: auto !important;
       }
     `;
-    
+
+
     document.head.appendChild(style);
-    document.body.classList.add('smooth-scroll');
 
     return () => {
       // Cleanup
@@ -88,11 +88,10 @@ const SmoothScrolling: React.FC<SmoothScrollingProps> = ({ children }) => {
         lenisRef.current?.raf(time * 1000);
       });
       ScrollTrigger.killAll();
-      
+
       if (document.head.contains(style)) {
         document.head.removeChild(style);
       }
-      document.body.classList.remove('smooth-scroll');
       clearTimeout(timer);
     };
   }, []);
@@ -101,11 +100,11 @@ const SmoothScrolling: React.FC<SmoothScrollingProps> = ({ children }) => {
   useEffect(() => {
     const handleLenisControl = (event: CustomEvent) => {
       const { action, target, duration, offset } = event.detail;
-      
+
       if (lenisRef.current) {
         switch (action) {
           case 'scrollTo':
-            lenisRef.current.scrollTo(target, { 
+            lenisRef.current.scrollTo(target, {
               duration: duration || 1.5,
               easing: (t: number) => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1,
               lerp: 0.1,
@@ -135,7 +134,7 @@ const SmoothScrolling: React.FC<SmoothScrollingProps> = ({ children }) => {
   return (
     <>
       <ScrollLoading isLoading={isInitializing} />
-      <div 
+      <div
         ref={scrollRef}
         className="w-full smooth-scroll"
         style={{

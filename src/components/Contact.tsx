@@ -34,7 +34,7 @@ const Contact = () => {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: [0.25, 0.1, 0.25, 1]
       }
     }
   };
@@ -120,7 +120,7 @@ const Contact = () => {
               r="3"
               fill="#60A5FA"
               initial={{ scale: 0, opacity: 0 }}
-              animate={{ 
+              animate={{
                 scale: [0, 1.5, 1],
                 opacity: [0, 1, 0.8]
               }}
@@ -186,13 +186,13 @@ const Contact = () => {
           {/* Left Column - Contact Info */}
           <motion.div variants={itemVariants} className="space-y-8">
             <div>
-              <motion.h1 
+              <motion.h1
                 className="text-6xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent mb-6"
                 variants={itemVariants}
               >
                 Let's Connect
               </motion.h1>
-              <motion.p 
+              <motion.p
                 className="text-xl text-gray-300 leading-relaxed"
                 variants={itemVariants}
               >
@@ -202,7 +202,7 @@ const Contact = () => {
 
             {/* Contact Details */}
             <motion.div variants={itemVariants} className="space-y-6">
-              <motion.div 
+              <motion.div
                 className="flex items-center space-x-4 group cursor-pointer"
                 whileHover={{ x: 10 }}
                 transition={{ type: "spring", stiffness: 400 }}
@@ -216,7 +216,7 @@ const Contact = () => {
                 </div>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 className="flex items-center space-x-4 group cursor-pointer"
                 whileHover={{ x: 10 }}
                 transition={{ type: "spring", stiffness: 400 }}
@@ -230,7 +230,7 @@ const Contact = () => {
                 </div>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 className="flex items-center space-x-4 group cursor-pointer"
                 whileHover={{ x: 10 }}
                 transition={{ type: "spring", stiffness: 400 }}
@@ -269,14 +269,14 @@ const Contact = () => {
 
           {/* Right Column - Contact Form */}
           <motion.div variants={itemVariants}>
-            <motion.div 
+            <motion.div
               className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
               <h2 className="text-2xl font-bold text-white mb-6">Send a Message</h2>
-              
+
               <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <motion.div
@@ -289,7 +289,7 @@ const Contact = () => {
                     <input
                       type="text"
                       id="name"
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
                       placeholder="Your name"
                     />
                   </motion.div>
@@ -304,7 +304,7 @@ const Contact = () => {
                     <input
                       type="email"
                       id="email"
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
                       placeholder="your@email.com"
                     />
                   </motion.div>
@@ -320,7 +320,7 @@ const Contact = () => {
                   <input
                     type="text"
                     id="subject"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
                     placeholder="Project inquiry"
                   />
                 </motion.div>
@@ -335,7 +335,7 @@ const Contact = () => {
                   <textarea
                     id="message"
                     rows={6}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300 resize-none"
                     placeholder="Tell me about your project..."
                   ></textarea>
                 </motion.div>
@@ -357,10 +357,10 @@ const Contact = () => {
 
       {/* Bottom Decoration */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
-      
+
       {/* Animated Grid Background */}
       <div className="absolute inset-0 opacity-5">
-        <div 
+        <div
           className="w-full h-full"
           style={{
             backgroundImage: `

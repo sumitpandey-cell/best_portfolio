@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ChevronUp } from 'lucide-react';
-import { scrollToTop } from '../lib/smoothScroll';
+
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,7 +22,14 @@ const ScrollToTop = () => {
   }, []);
 
   const handleScrollToTop = () => {
-    scrollToTop(1.2);
+    const event = new CustomEvent('lenisControl', {
+      detail: {
+        action: 'scrollTo',
+        target: 0,
+        duration: 1.5
+      }
+    });
+    window.dispatchEvent(event);
   };
 
   return (
@@ -44,9 +51,9 @@ const ScrollToTop = () => {
       `}
       aria-label="Scroll to top"
     >
-      <ChevronUp 
-        size={24} 
-        className="text-white transition-transform duration-300 group-hover:scale-110" 
+      <ChevronUp
+        size={24}
+        className="text-white transition-transform duration-300 group-hover:scale-110"
       />
     </button>
   );
