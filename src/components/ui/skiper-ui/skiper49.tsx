@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import React from "react";
 import {
   Autoplay,
   EffectCoverflow,
@@ -16,7 +15,8 @@ import "swiper/css/navigation";
 import "swiper/css";
 import "swiper/css/effect-cards";
 
-import { cn } from "../../../lib/utils";
+// Simple cn utility
+const cn = (...classes: (string | undefined)[]) => classes.filter(Boolean).join(' ');
 
 const Skiper49 = () => {
   const images = [
@@ -133,9 +133,9 @@ const Carousel_003 = ({
           autoplay={
             autoplay
               ? {
-                  delay: 1500,
-                  disableOnInteraction: true,
-                }
+                delay: 1500,
+                disableOnInteraction: true,
+              }
               : false
           }
           effect="coverflow"
@@ -153,16 +153,16 @@ const Carousel_003 = ({
           pagination={
             showPagination
               ? {
-                  clickable: true,
-                }
+                clickable: true,
+              }
               : false
           }
           navigation={
             showNavigation
               ? {
-                  nextEl: ".swiper-button-next",
-                  prevEl: ".swiper-button-prev",
-                }
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              }
               : false
           }
           className="Carousal_003"

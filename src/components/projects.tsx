@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronLeftIcon, ChevronRightIcon, ExternalLink, Github, ArrowRight } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, ExternalLink, Github } from "lucide-react";
 import {
     Autoplay,
     EffectCoverflow,
@@ -11,8 +11,6 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css";
-
-import { FlickeringGrid } from "./ui/shadcn-io/flickering-grid";
 
 
 // Project data structure

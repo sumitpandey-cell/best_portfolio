@@ -95,7 +95,7 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
         {greetings.map((greeting, index) => (
           <div
             key={index}
-            ref={(el) => (textRefs.current[index] = el)}
+            ref={(el) => { textRefs.current[index] = el; }}
             className="absolute flex flex-col items-center justify-center"
             style={{ opacity: 0 }}
           >
