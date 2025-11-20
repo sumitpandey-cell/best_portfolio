@@ -1,25 +1,31 @@
-
 import image from '../assets/image.png';
 import Navbar from './navbar';
 import MagneticButton from './MagneticButton';
 import { scrollToSection } from '../lib/smoothScroll';
+
 const Hero = () => {
   const handleViewWork = () => {
     scrollToSection('work', 1.5);
   };
 
   const handleDownloadCV = () => {
-    // Add CV download logic here
+    const resumePath = 'src/assets/Sumit_pandey_resume.pdf'; // Assuming resume.pdf is directly in the public/assets or handled by bundler
+
+    const link = document.createElement('a');
+    link.href = resumePath;
+    link.download = 'Sumit_pandey_resume.pdf'; // Desired file name for download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     console.log('Download CV clicked');
   };
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      
 
       {/* Central Light Brightening Effect */}
       <div className="absolute inset-0">
-        <div 
+        <div
           className="w-full h-full"
           style={{
             background: `
@@ -37,7 +43,7 @@ const Hero = () => {
 
       {/* Dark Vignette Effect */}
       <div className="absolute inset-0">
-        <div 
+        <div
           className="w-full h-full"
           style={{
             background: `
@@ -64,7 +70,7 @@ const Hero = () => {
           backgroundSize: '30px 30px'
         }}></div>
       </div>
-      
+
 
       {/* Animated background elements */}
       <div className="absolute inset-0">
@@ -76,7 +82,7 @@ const Hero = () => {
       <Navbar />
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
-        
+
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-120px)]">
 
           {/* Left Content */}
@@ -103,7 +109,7 @@ const Hero = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex space-x-4 pt-4">
+            <div className="flex flex-wrap gap-4 pt-4">
               <MagneticButton
                 onClick={handleViewWork}
                 className="bg-linear-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 font-medium glow"

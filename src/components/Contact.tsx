@@ -5,6 +5,28 @@ import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Globe } from 'luc
 const Contact = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      console.log(formData);
+      
+
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred.');
+    }
+  };
 
   useEffect(() => {
     setIsVisible(true);
@@ -40,10 +62,10 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: Globe, href: "https://portfolio.com", label: "Portfolio" }
+    { icon: Github, href: "https://github.com/sumitpandey-cell", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/sumit-pandey-a94a052a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", label: "LinkedIn" },
+    { icon: Twitter, href: "https://x.com/sumitpa8765832", label: "Twitter" },
+    { icon: Globe, href: "https://www.internadda.com/", label: "Startup" }
   ];
 
   return (
@@ -212,7 +234,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-gray-400 text-sm">Email</p>
-                  <p className="text-white font-medium">hello@portfolio.com</p>
+                  <p className="text-white font-medium">sumitpandey17370@gmail.com</p>
                 </div>
               </motion.div>
 
@@ -226,7 +248,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-gray-400 text-sm">Phone</p>
-                  <p className="text-white font-medium">+1 (555) 123-4567</p>
+                  <p className="text-white font-medium">8920609324</p>
                 </div>
               </motion.div>
 
@@ -240,7 +262,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-gray-400 text-sm">Location</p>
-                  <p className="text-white font-medium">San Francisco, CA</p>
+                  <p className="text-white font-medium">Delhi, India</p>
                 </div>
               </motion.div>
             </motion.div>
@@ -277,7 +299,7 @@ const Contact = () => {
             >
               <h2 className="text-2xl font-bold text-white mb-6">Send a Message</h2>
 
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <motion.div
                     whileFocus={{ scale: 1.02 }}
@@ -289,8 +311,11 @@ const Contact = () => {
                     <input
                       type="text"
                       id="name"
+                      value={formData.name}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
                       placeholder="Your name"
+                      required
                     />
                   </motion.div>
 
@@ -304,8 +329,11 @@ const Contact = () => {
                     <input
                       type="email"
                       id="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
                       placeholder="your@email.com"
+                      required
                     />
                   </motion.div>
                 </div>
@@ -320,8 +348,11 @@ const Contact = () => {
                   <input
                     type="text"
                     id="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
                     placeholder="Project inquiry"
+                    required
                   />
                 </motion.div>
 
@@ -335,8 +366,11 @@ const Contact = () => {
                   <textarea
                     id="message"
                     rows={6}
+                    value={formData.message}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300 resize-none"
                     placeholder="Tell me about your project..."
+                    required
                   ></textarea>
                 </motion.div>
 
